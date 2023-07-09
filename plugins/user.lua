@@ -9,4 +9,6 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
+  { "tpope/vim-fugitive", lazy = false },
+  { "mg979/vim-visual-multi", lazy = false },
 }
