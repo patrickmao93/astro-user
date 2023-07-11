@@ -23,7 +23,13 @@ return {
     -- quick save
     ["<C-s>"] = { ":w!<cr>", desc = "Save File" }, -- change description but the same command
     -- ["<leader>gg"] = { name = "Fugitive" },
-    ["<leader>r"] = { ":vertical G<cr>", name = "Fugitive" },
+    ["<leader>yd"] = { ':let @*=expand("%:p:h")<CR>', desc = "Copy Current Dir" },
+    ["<C-j>"] = { ":m .+1<cr>", desc = "move line down" },
+    ["<C-k>"] = { ":m .-2<cr>", desc = "move line up" },
+  },
+  i = {
+    ["<C-j>"] = { "<esc>:m .+1<cr>gi", desc = "move line down" },
+    ["<C-k>"] = { "<esc>:m .-2<cr>gi", desc = "move line up" },
   },
   t = {
     -- setting a mapping to false will disable it
