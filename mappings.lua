@@ -1,9 +1,20 @@
+function compare_to_clipboard()
+  local ftype = vim.api.nvim_eval "&filetype"
+  vim.cmd "vsplit"
+  vim.cmd "enew"
+  vim.cmd "normal! P"
+  vim.cmd "setlocal buftype=nowrite"
+  vim.cmd("set filetype=" .. ftype)
+  vim.cmd "diffthis"
+  vim.cmd [[execute "normal! \<C-w>h"]]
+  vim.cmd "diffthis"
+end
+
 -- Mapping data with "desc" stored directly by vim.keymap.set().
 --
 -- Please use this mappings table to set keyboard mapping since this is the
 -- lower level configuration and more robust one. (which-key will
 -- automatically pick-up stored data by this setting.)
-local bu = require "astronvim.utils.buffer"
 return {
   -- first key is the mode
   n = {
@@ -27,10 +38,21 @@ return {
     ["<leader>yd"] = { ':let @*=expand("%:p:h")<CR>', desc = "Copy Current Dir" },
     ["<C-j>"] = { ":m .+1<cr>", desc = "move line down" },
     ["<C-k>"] = { ":m .-2<cr>", desc = "move line up" },
+    ["<C-.>"] = {
+      function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
+      desc = "Go to Next buffer",
+    },
+    ["<C-,>"] = {
+      function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
+      desc = "Go to Previous buffer",
+    },
   },
   i = {
     ["<C-j>"] = { "<esc>:m .+1<cr>gi", desc = "move line down" },
     ["<C-k>"] = { "<esc>:m .-2<cr>gi", desc = "move line up" },
+  },
+  v = {
+    ["<C-m>"] = { compare_to_clipboard, desc = "compare selected with clipboard" },
   },
   t = {
     -- setting a mapping to false will disable it
