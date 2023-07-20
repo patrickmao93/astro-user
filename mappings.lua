@@ -1,4 +1,4 @@
-function compare_to_clipboard()
+local function compare_to_clipboard()
   local ftype = vim.api.nvim_eval "&filetype"
   vim.cmd "vsplit"
   vim.cmd "enew"
@@ -36,8 +36,8 @@ return {
     ["<C-s>"] = { ":w!<cr>", desc = "Save File" }, -- change description but the same command
     -- ["<leader>gg"] = { name = "Fugitive" },
     ["<leader>yd"] = { ':let @*=expand("%:p:h")<CR>', desc = "Copy Current Dir" },
-    ["<C-j>"] = { ":m .+1<cr>", desc = "move line down" },
-    ["<C-k>"] = { ":m .-2<cr>", desc = "move line up" },
+    ["<A-DOWN>"] = { ":m .+1<cr>", desc = "move line down" },
+    ["<A-UP>"] = { ":m .-2<cr>", desc = "move line up" },
     ["<C-.>"] = {
       function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
       desc = "Go to Next buffer",
@@ -48,8 +48,8 @@ return {
     },
   },
   i = {
-    ["<C-j>"] = { "<esc>:m .+1<cr>gi", desc = "move line down" },
-    ["<C-k>"] = { "<esc>:m .-2<cr>gi", desc = "move line up" },
+    ["<A-DOWN>"] = { "<esc>:m .+1<cr>gi", desc = "move line down" },
+    ["<A-UP>"] = { "<esc>:m .-2<cr>gi", desc = "move line up" },
   },
   v = {
     ["<C-m>"] = { compare_to_clipboard, desc = "compare selected with clipboard" },
