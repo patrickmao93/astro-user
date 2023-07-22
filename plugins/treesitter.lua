@@ -8,6 +8,7 @@ return {
       "typescript",
       "go",
       "solidity",
+      "markdown",
     })
   end,
 }
