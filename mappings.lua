@@ -48,6 +48,10 @@ local maps = {
       function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
       desc = "Go to Previous buffer",
     },
+    ["<leader>rr"] = {
+      ":GoTestFunc<CR>",
+      desc = "Test Go Function",
+    },
   },
   i = {
     ["<A-DOWN>"] = { "<esc>:m .+1<cr>gi", desc = "move line down" },

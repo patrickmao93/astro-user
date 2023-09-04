@@ -9,6 +9,7 @@ return {
     wrap = false, -- sets vim.opt.wrap
     tabstop = 4,
     shiftwidth = 4,
+    -- guicursor = "n-c:block-Cursor/lCursor,i-ci:block-Cursor2/lCursor2",
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader
